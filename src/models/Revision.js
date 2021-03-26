@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 import postgres from '../../../config/postgres.js';
-import Media from './Media.js';
+import Key from './Key.js';
 import RevisionStatus from './RevisionStatus.js';
 import User from './User.js';
 
@@ -14,29 +14,10 @@ const Revision = postgres.define('key_revision', {
         field: 'revision_id',
         defaultValue: Sequelize.UUIDV4
     },
-    title: {
-        type: Sequelize.STRING(60),
-        field: 'title',
-        allowNull: false
-    },
-    description: {
-        type: Sequelize.TEXT,
-        field: 'description',
-        allowNull: false
-    },
     content: {
         type: Sequelize.JSONB,
         field: 'key_content',
         allowNull: false
-    },
-    mediaId: {
-        type: Sequelize.INTEGER,
-        field: 'media_id',
-        allowNull: true,
-        references: {
-            model: Media,
-            key: "media_id"
-        }
     },
     createdBy: {
         type: Sequelize.UUID,
@@ -58,7 +39,13 @@ const Revision = postgres.define('key_revision', {
     }
 }, {
     createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    updatedAt: 'updated_at',
+    classMethods: {
+        associate: () => {
+            this.hasMany(Key);
+        }
+    }
 });
+
 
 export default Revision;

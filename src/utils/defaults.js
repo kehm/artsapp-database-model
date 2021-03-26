@@ -1,5 +1,11 @@
 //Database default values
 
+export const characterTypes = [
+    { name: "EXCLUSIVE", description: "Exclusive" },
+    { name: "MULTISTATE", description: "Multistate" },
+    { name: "NUMERICAL", description: "Numerical" }
+]
+
 export const keyStatus = [
     { name: "PRIVATE", description: "Private" },
     { name: "BETA", description: "Beta" },

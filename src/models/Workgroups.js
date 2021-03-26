@@ -32,7 +32,7 @@ const Workgroups = postgres.define('user_workgroups', {
             key: "workgroup_id"
         }
     },
-    role: {
+    roleName: {
         type: Sequelize.STRING(30),
         field: 'role_name',
         allowNull: false,

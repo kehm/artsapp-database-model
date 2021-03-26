@@ -2,6 +2,7 @@ import Sequelize from 'sequelize';
 import postgres from '../../../config/postgres.js';
 import Group from './Group.js';
 import KeyStatus from './KeyStatus.js';
+import Media from './Media.js';
 import Revision from './Revision.js';
 import User from './User.js';
 import Workgroup from './Workgroup.js';
@@ -15,6 +16,25 @@ const Key = postgres.define('artsapp_key', {
         primaryKey: true,
         field: 'artsapp_key_id',
         defaultValue: Sequelize.UUIDV4
+    },
+    title: {
+        type: Sequelize.STRING(60),
+        field: 'title',
+        allowNull: false
+    },
+    description: {
+        type: Sequelize.TEXT,
+        field: 'description',
+        allowNull: false
+    },
+    mediaId: {
+        type: Sequelize.INTEGER,
+        field: 'media_id',
+        allowNull: true,
+        references: {
+            model: Media,
+            key: "media_id"
+        }
     },
     revisionId: {
         type: Sequelize.UUID,
