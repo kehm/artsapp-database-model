@@ -4,14 +4,14 @@ import Language from './Language.js';
 import Organization from './Organization.js';
 
 /**
- * Define table for organization data in different languages
+ * Define table for organization info in different languages
  */
-const OrganizationData = postgres.define('organization_data', {
+const OrganizationInfo = postgres.define('organization_info', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        field: 'organization_data_id',
-        autoIncrement: true
+        field: 'organization_info_id',
+        autoIncrement: true,
     },
     organizationId: {
         type: Sequelize.INTEGER,
@@ -19,8 +19,8 @@ const OrganizationData = postgres.define('organization_data', {
         allowNull: false,
         references: {
             model: Organization,
-            key: "organization_id"
-        }
+            key: 'organization_id',
+        },
     },
     languageCode: {
         type: Sequelize.STRING(5),
@@ -28,27 +28,27 @@ const OrganizationData = postgres.define('organization_data', {
         allowNull: false,
         references: {
             model: Language,
-            key: "language_code"
-        }
+            key: 'language_code',
+        },
     },
     name: {
         type: Sequelize.STRING(60),
         field: 'name',
         allowNull: false,
-        unique: true
+        unique: true,
     },
     description: {
         type: Sequelize.STRING(255),
         field: 'description',
-        allowNull: true
+        allowNull: true,
     },
     homeUrl: {
         type: Sequelize.STRING(255),
         field: 'home_url',
-        allowNull: true
-    }
+        allowNull: true,
+    },
 }, {
-    timestamps: false
+    timestamps: false,
 });
 
-export default OrganizationData;
+export default OrganizationInfo;

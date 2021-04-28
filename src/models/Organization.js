@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
 import postgres from '../../../config/postgres.js';
+import OrganizationStatus from './OrganizationStatus.js';
 
 /**
  * Define table for organization
@@ -9,10 +10,19 @@ const Organization = postgres.define('organization', {
         type: Sequelize.INTEGER,
         primaryKey: true,
         field: 'organization_id',
-        autoIncrement: true
-    }
+        autoIncrement: true,
+    },
+    status: {
+        type: Sequelize.STRING(30),
+        field: 'organization_status_name',
+        allowNull: false,
+        references: {
+            model: OrganizationStatus,
+            key: 'organization_status_name',
+        },
+    },
 }, {
-    timestamps: false
+    timestamps: false,
 });
 
 export default Organization;

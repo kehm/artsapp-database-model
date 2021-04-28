@@ -10,13 +10,13 @@ const Workgroup = postgres.define('workgroup', {
         type: Sequelize.INTEGER,
         primaryKey: true,
         field: 'workgroup_id',
-        autoIncrement: true
+        autoIncrement: true,
     },
     name: {
         type: Sequelize.STRING(60),
         field: 'name',
         allowNull: false,
-        unique: true
+        unique: true,
     },
     organizationId: {
         type: Sequelize.INTEGER,
@@ -24,11 +24,11 @@ const Workgroup = postgres.define('workgroup', {
         allowNull: false,
         references: {
             model: Organization,
-            key: "organization_id"
-        }
-    }
+            key: 'organization_id',
+        },
+    },
 }, {
-    timestamps: false
+    timestamps: false,
 });
 
 export default Workgroup;

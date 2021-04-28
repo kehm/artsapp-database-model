@@ -2,7 +2,6 @@ import Sequelize from 'sequelize';
 import postgres from '../../../config/postgres.js';
 import Group from './Group.js';
 import KeyStatus from './KeyStatus.js';
-import Media from './Media.js';
 import Revision from './Revision.js';
 import User from './User.js';
 import Workgroup from './Workgroup.js';
@@ -15,26 +14,7 @@ const Key = postgres.define('artsapp_key', {
         type: Sequelize.UUID,
         primaryKey: true,
         field: 'artsapp_key_id',
-        defaultValue: Sequelize.UUIDV4
-    },
-    title: {
-        type: Sequelize.STRING(60),
-        field: 'title',
-        allowNull: false
-    },
-    description: {
-        type: Sequelize.TEXT,
-        field: 'description',
-        allowNull: false
-    },
-    mediaId: {
-        type: Sequelize.INTEGER,
-        field: 'media_id',
-        allowNull: true,
-        references: {
-            model: Media,
-            key: "media_id"
-        }
+        defaultValue: Sequelize.UUIDV4,
     },
     revisionId: {
         type: Sequelize.UUID,
@@ -42,8 +22,8 @@ const Key = postgres.define('artsapp_key', {
         allowNull: true,
         references: {
             model: Revision,
-            key: "revision_id"
-        }
+            key: 'revision_id',
+        },
     },
     keyGroupId: {
         type: Sequelize.INTEGER,
@@ -51,8 +31,8 @@ const Key = postgres.define('artsapp_key', {
         allowNull: true,
         references: {
             model: Group,
-            key: "key_group_id"
-        }
+            key: 'key_group_id',
+        },
     },
     workgroupId: {
         type: Sequelize.INTEGER,
@@ -60,8 +40,8 @@ const Key = postgres.define('artsapp_key', {
         allowNull: false,
         references: {
             model: Workgroup,
-            key: "workgroup_id"
-        }
+            key: 'workgroup_id',
+        },
     },
     createdBy: {
         type: Sequelize.UUID,
@@ -69,8 +49,8 @@ const Key = postgres.define('artsapp_key', {
         allowNull: false,
         references: {
             model: User,
-            key: "artsapp_user_id"
-        }
+            key: 'artsapp_user_id',
+        },
     },
     status: {
         type: Sequelize.STRING(30),
@@ -78,17 +58,27 @@ const Key = postgres.define('artsapp_key', {
         allowNull: false,
         references: {
             model: KeyStatus,
-            key: "key_status_name"
-        }
+            key: 'key_status_name',
+        },
     },
     version: {
         type: Sequelize.STRING(30),
         allowNull: true,
-        field: 'version'
-    }
+        field: 'version',
+    },
+    creators: {
+        type: Sequelize.ARRAY(Sequelize.STRING(60)),
+        allowNull: true,
+        field: 'creators',
+    },
+    contributors: {
+        type: Sequelize.ARRAY(Sequelize.STRING(60)),
+        allowNull: true,
+        field: 'contributors',
+    },
 }, {
     createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    updatedAt: 'updated_at',
 });
 
 export default Key;

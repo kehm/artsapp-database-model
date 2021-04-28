@@ -9,11 +9,10 @@ const Statement = postgres.define('taxon_statement', {
         type: Sequelize.INTEGER,
         primaryKey: true,
         field: 'taxon_statement_id',
-        autoIncrement: true
-    }
+        autoIncrement: true,
+    },
 }, {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    timestamps: false,
 });
 
 export default Statement;

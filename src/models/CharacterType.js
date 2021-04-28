@@ -8,15 +8,15 @@ const CharacterType = postgres.define('character_type', {
     name: {
         type: Sequelize.STRING(30),
         primaryKey: true,
-        field: 'character_type_name'
+        field: 'character_type_name',
     },
     description: {
         type: Sequelize.STRING(60),
         field: 'description',
-        allowNull: true
-    }
+        allowNull: true,
+    },
 }, {
-    timestamps: false
+    timestamps: false,
 });
 
 export default CharacterType;

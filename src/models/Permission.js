@@ -8,15 +8,10 @@ const Permission = postgres.define('permission', {
     name: {
         type: Sequelize.STRING(30),
         primaryKey: true,
-        field: 'permission_name'
+        field: 'permission_name',
     },
-    description: {
-        type: Sequelize.STRING(60),
-        field: 'description',
-        allowNull: true
-    }
 }, {
-    timestamps: false
+    timestamps: false,
 });
 
 export default Permission;

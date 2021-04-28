@@ -8,15 +8,15 @@ const RevisionStatus = postgres.define('revision_status', {
     name: {
         type: Sequelize.STRING(30),
         primaryKey: true,
-        field: 'revision_status_name'
+        field: 'revision_status_name',
     },
     description: {
         type: Sequelize.STRING(60),
         field: 'description',
-        allowNull: true
-    }
+        allowNull: true,
+    },
 }, {
-    timestamps: false
+    timestamps: false,
 });
 
 export default RevisionStatus;

@@ -4,13 +4,13 @@ import Key from './Key.js';
 import Language from './Language.js';
 
 /**
- * Define many-to-many table for key languages
+ * Define table for key info in different languages
  */
-const Languages = postgres.define('key_languages', {
+const KeyInfo = postgres.define('key_info', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        field: 'key_languages_id',
+        field: 'key_info_id',
         autoIncrement: true,
     },
     keyId: {
@@ -31,8 +31,19 @@ const Languages = postgres.define('key_languages', {
             key: 'language_code',
         },
     },
+    title: {
+        type: Sequelize.STRING(60),
+        field: 'title',
+        allowNull: false,
+    },
+    description: {
+        type: Sequelize.TEXT,
+        field: 'description',
+        allowNull: true,
+    },
 }, {
-    timestamps: false,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
 });
 
-export default Languages;
+export default KeyInfo;

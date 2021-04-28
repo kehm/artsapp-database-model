@@ -11,7 +11,7 @@ const Session = postgres.define('session', {
     },
     userId: Sequelize.STRING,
     expires: Sequelize.DATE,
-    data: Sequelize.TEXT
+    data: Sequelize.TEXT,
 });
 
 export default Session;

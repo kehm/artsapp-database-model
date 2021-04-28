@@ -1,25 +1,25 @@
 import Sequelize from 'sequelize';
 import postgres from '../../../config/postgres.js';
-import Key from './Key.js';
 import Language from './Language.js';
+import Media from './Media.js';
 
 /**
- * Define many-to-many table for key languages
+ * Define table for media info in different languages
  */
-const Languages = postgres.define('key_languages', {
+const MediaInfo = postgres.define('media_info', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        field: 'key_languages_id',
+        field: 'media_info_id',
         autoIncrement: true,
     },
-    keyId: {
-        type: Sequelize.UUID,
-        field: 'artsapp_key_id',
+    mediaId: {
+        type: Sequelize.INTEGER,
+        field: 'media_id',
         allowNull: false,
         references: {
-            model: Key,
-            key: 'artsapp_key_id',
+            model: Media,
+            key: 'media_id',
         },
     },
     languageCode: {
@@ -31,8 +31,13 @@ const Languages = postgres.define('key_languages', {
             key: 'language_code',
         },
     },
+    title: {
+        type: Sequelize.STRING(255),
+        field: 'title',
+        allowNull: true,
+    },
 }, {
     timestamps: false,
 });
 
-export default Languages;
+export default MediaInfo;

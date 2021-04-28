@@ -11,7 +11,7 @@ const Character = postgres.define('taxon_character', {
         type: Sequelize.INTEGER,
         primaryKey: true,
         field: 'taxon_character_id',
-        autoIncrement: true
+        autoIncrement: true,
     },
     type: {
         type: Sequelize.STRING(30),
@@ -19,8 +19,8 @@ const Character = postgres.define('taxon_character', {
         allowNull: false,
         references: {
             model: CharacterType,
-            key: "character_type_name"
-        }
+            key: 'character_type_name'
+        },
     },
     keyId: {
         type: Sequelize.UUID,
@@ -28,12 +28,11 @@ const Character = postgres.define('taxon_character', {
         allowNull: false,
         references: {
             model: Key,
-            key: "artsapp_key_id"
-        }
-    }
+            key: 'artsapp_key_id'
+        },
+    },
 }, {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    timestamps: false,
 });
 
 export default Character;

@@ -12,7 +12,7 @@ const Workgroups = postgres.define('user_workgroups', {
         type: Sequelize.INTEGER,
         primaryKey: true,
         field: 'user_workgroups_id',
-        autoIncrement: true
+        autoIncrement: true,
     },
     userId: {
         type: Sequelize.UUID,
@@ -20,8 +20,8 @@ const Workgroups = postgres.define('user_workgroups', {
         allowNull: false,
         references: {
             model: User,
-            key: "artsapp_user_id"
-        }
+            key: 'artsapp_user_id',
+        },
     },
     workgroupId: {
         type: Sequelize.INTEGER,
@@ -29,20 +29,20 @@ const Workgroups = postgres.define('user_workgroups', {
         allowNull: false,
         references: {
             model: Workgroup,
-            key: "workgroup_id"
-        }
+            key: 'workgroup_id',
+        },
     },
-    roleName: {
-        type: Sequelize.STRING(30),
-        field: 'role_name',
+    roleId: {
+        type: Sequelize.INTEGER,
+        field: 'role_id',
         allowNull: false,
         references: {
             model: Role,
-            key: "role_name"
-        }
-    }
+            key: 'role_id',
+        },
+    },
 }, {
-    timestamps: false
+    timestamps: false,
 });
 
 export default Workgroups;

@@ -5,18 +5,14 @@ import postgres from '../../../config/postgres.js';
  * Define table for user roles
  */
 const Role = postgres.define('role', {
-    name: {
-        type: Sequelize.STRING(30),
+    id: {
+        type: Sequelize.INTEGER,
         primaryKey: true,
-        field: 'role_name'
+        field: 'role_id',
+        autoIncrement: true,
     },
-    description: {
-        type: Sequelize.STRING(60),
-        field: 'description',
-        allowNull: true
-    }
 }, {
-    timestamps: false
+    timestamps: false,
 });
 
 export default Role;

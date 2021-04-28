@@ -11,7 +11,7 @@ const Taxon = postgres.define('taxon', {
         type: Sequelize.INTEGER,
         primaryKey: true,
         field: 'taxon_id',
-        autoIncrement: true
+        autoIncrement: true,
     },
     keyId: {
         type: Sequelize.UUID,
@@ -19,21 +19,11 @@ const Taxon = postgres.define('taxon', {
         allowNull: false,
         references: {
             model: Key,
-            key: "artsapp_key_id"
-        }
+            key: 'artsapp_key_id',
+        },
     },
-    mediaId: {
-        type: Sequelize.INTEGER,
-        field: 'media_id',
-        allowNull: true,
-        references: {
-            model: Media,
-            key: "media_id"
-        }
-    }
 }, {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    timestamps: false,
 });
 
 export default Taxon;

@@ -8,16 +8,16 @@ const Language = postgres.define('language', {
     code: {
         type: Sequelize.STRING(5),
         primaryKey: true,
-        field: 'language_code'
+        field: 'language_code',
     },
     name: {
         type: Sequelize.STRING(30),
         field: 'name',
         allowNull: false,
-        unique: true
-    }
+        unique: true,
+    },
 }, {
-    timestamps: false
+    timestamps: false,
 });
 
 export default Language;

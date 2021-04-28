@@ -10,18 +10,7 @@ const Collection = postgres.define('collection', {
         type: Sequelize.INTEGER,
         primaryKey: true,
         field: 'collection_id',
-        autoIncrement: true
-    },
-    name: {
-        type: Sequelize.STRING(60),
-        field: 'name',
-        allowNull: false,
-        unique: true
-    },
-    description: {
-        type: Sequelize.TEXT,
-        field: 'description',
-        allowNull: true
+        autoIncrement: true,
     },
     workgroupId: {
         type: Sequelize.INTEGER,
@@ -29,11 +18,11 @@ const Collection = postgres.define('collection', {
         allowNull: false,
         references: {
             model: Workgroup,
-            key: "workgroup_id"
-        }
-    }
+            key: 'workgroup_id',
+        },
+    },
 }, {
-    timestamps: false
+    timestamps: false,
 });
 
 export default Collection;

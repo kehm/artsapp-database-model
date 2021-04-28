@@ -9,21 +9,10 @@ const Group = postgres.define('key_group', {
         type: Sequelize.INTEGER,
         primaryKey: true,
         field: 'key_group_id',
-        autoIncrement: true
+        autoIncrement: true,
     },
-    name: {
-        type: Sequelize.STRING(60),
-        field: 'name',
-        allowNull: false,
-        unique: true
-    },
-    description: {
-        type: Sequelize.STRING(255),
-        field: 'description',
-        allowNull: true
-    }
 }, {
-    timestamps: false
+    timestamps: false,
 });
 
 export default Group;

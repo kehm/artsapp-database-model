@@ -11,28 +11,28 @@ const Permissions = postgres.define('role_permissions', {
         type: Sequelize.INTEGER,
         primaryKey: true,
         field: 'role_permissions_id',
-        autoIncrement: true
+        autoIncrement: true,
     },
-    role: {
-        type: Sequelize.STRING(30),
-        field: 'role_name',
+    roleId: {
+        type: Sequelize.INTEGER,
+        field: 'role_id',
         allowNull: false,
         references: {
             model: Role,
-            key: "role_name"
-        }
+            key: 'role_id',
+        },
     },
-    permission: {
+    permissionName: {
         type: Sequelize.STRING(30),
         field: 'permission_name',
         allowNull: false,
         references: {
             model: Permission,
-            key: "permission_name"
-        }
-    }
+            key: 'permission_name',
+        },
+    },
 }, {
-    timestamps: false
+    timestamps: false,
 });
 
 export default Permissions;

@@ -1,25 +1,25 @@
 import Sequelize from 'sequelize';
 import postgres from '../../../config/postgres.js';
-import Key from './Key.js';
 import Language from './Language.js';
+import Role from './Role.js';
 
 /**
- * Define many-to-many table for key languages
+ * Define table for role info in different languages
  */
-const Languages = postgres.define('key_languages', {
+const RoleInfo = postgres.define('role_info', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        field: 'key_languages_id',
+        field: 'role_info_id',
         autoIncrement: true,
     },
-    keyId: {
-        type: Sequelize.UUID,
-        field: 'artsapp_key_id',
+    roleId: {
+        type: Sequelize.INTEGER,
+        field: 'role_id',
         allowNull: false,
         references: {
-            model: Key,
-            key: 'artsapp_key_id',
+            model: Role,
+            key: 'role_id',
         },
     },
     languageCode: {
@@ -31,8 +31,18 @@ const Languages = postgres.define('key_languages', {
             key: 'language_code',
         },
     },
+    name: {
+        type: Sequelize.STRING(30),
+        field: 'name',
+        allowNull: false,
+    },
+    description: {
+        type: Sequelize.STRING(255),
+        field: 'description',
+        allowNull: true,
+    },
 }, {
     timestamps: false,
 });
 
-export default Languages;
+export default RoleInfo;

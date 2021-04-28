@@ -11,7 +11,7 @@ const Editors = postgres.define('key_editors', {
         type: Sequelize.INTEGER,
         primaryKey: true,
         field: 'key_editors_id',
-        autoIncrement: true
+        autoIncrement: true,
     },
     keyId: {
         type: Sequelize.UUID,
@@ -19,8 +19,8 @@ const Editors = postgres.define('key_editors', {
         allowNull: false,
         references: {
             model: Key,
-            key: "artsapp_key_id"
-        }
+            key: 'artsapp_key_id',
+        },
     },
     userId: {
         type: Sequelize.UUID,
@@ -28,11 +28,11 @@ const Editors = postgres.define('key_editors', {
         allowNull: false,
         references: {
             model: User,
-            key: "artsapp_user_id"
-        }
-    }
+            key: 'artsapp_user_id',
+        },
+    },
 }, {
-    timestamps: false
+    timestamps: false,
 });
 
 export default Editors;

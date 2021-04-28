@@ -1,15 +1,16 @@
 import Sequelize from 'sequelize';
 import postgres from '../../../config/postgres.js';
 import Group from './Group.js';
+import Media from './Media.js';
 
 /**
- * Define table for key group parents
+ * Define many-to-many table for key group media
  */
-const GroupParents = postgres.define('key_group_parents', {
+const GroupMedia = postgres.define('key_group_media', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        field: 'key_group_parents_id',
+        field: 'key_media_id',
         autoIncrement: true,
     },
     groupId: {
@@ -21,17 +22,17 @@ const GroupParents = postgres.define('key_group_parents', {
             key: 'key_group_id',
         },
     },
-    parentId: {
+    mediaId: {
         type: Sequelize.INTEGER,
-        field: 'key_group_parent_id',
+        field: 'media_id',
         allowNull: false,
         references: {
-            model: Group,
-            key: 'key_group_id',
+            model: Media,
+            key: 'media_id',
         },
     },
 }, {
     timestamps: false,
 });
 
-export default GroupParents;
+export default GroupMedia;

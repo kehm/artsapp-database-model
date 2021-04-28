@@ -1,16 +1,16 @@
 import Sequelize from 'sequelize';
 import postgres from '../../../config/postgres.js';
 import Key from './Key.js';
-import Revision from './Revision.js';
+import Media from './Media.js';
 
 /**
- * Define many-to-many table for key revisions
+ * Define many-to-many table for key media
  */
-const Revisions = postgres.define('key_revisions', {
+const KeyMedia = postgres.define('key_media', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        field: 'key_revisions_id',
+        field: 'key_media_id',
         autoIncrement: true,
     },
     keyId: {
@@ -22,17 +22,17 @@ const Revisions = postgres.define('key_revisions', {
             key: 'artsapp_key_id',
         },
     },
-    revisionId: {
-        type: Sequelize.UUID,
-        field: 'revision_id',
+    mediaId: {
+        type: Sequelize.INTEGER,
+        field: 'media_id',
         allowNull: false,
         references: {
-            model: Revision,
-            key: 'revision_id',
+            model: Media,
+            key: 'media_id',
         },
     },
 }, {
     timestamps: false,
 });
 
-export default Revisions;
+export default KeyMedia;
