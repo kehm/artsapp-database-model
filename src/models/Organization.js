@@ -12,6 +12,12 @@ const Organization = postgres.define('organization', {
         field: 'organization_id',
         autoIncrement: true,
     },
+    idpId: {
+        type: Sequelize.STRING(255),
+        field: 'idp_id',
+        allowNull: false,
+        unique: true,
+    },
     status: {
         type: Sequelize.STRING(30),
         field: 'organization_status_name',

@@ -15,7 +15,7 @@ const CharacterState = postgres.define('character_state', {
     characterId: {
         type: Sequelize.INTEGER,
         field: 'taxon_character_id',
-        allowNull: false,
+        allowNull: true,
         references: {
             model: Character,
             key: 'taxon_character_id',

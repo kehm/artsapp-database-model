@@ -1,6 +1,5 @@
 import Sequelize from 'sequelize';
 import postgres from '../../../config/postgres.js';
-import Role from './Role.js';
 import User from './User.js';
 import Workgroup from './Workgroup.js';
 
@@ -30,15 +29,6 @@ const Workgroups = postgres.define('user_workgroups', {
         references: {
             model: Workgroup,
             key: 'workgroup_id',
-        },
-    },
-    roleId: {
-        type: Sequelize.INTEGER,
-        field: 'role_id',
-        allowNull: false,
-        references: {
-            model: Role,
-            key: 'role_id',
         },
     },
 }, {

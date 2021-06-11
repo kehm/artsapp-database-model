@@ -1,5 +1,7 @@
 import Sequelize from 'sequelize';
 import postgres from '../../../config/postgres.js';
+import Organization from './Organization.js';
+import Role from './Role.js';
 
 /**
  * Define table for users
@@ -30,6 +32,44 @@ const User = postgres.define('artsapp_user', {
             isEmail: true,
         },
         unique: true,
+    },
+    accessToken: {
+        type: Sequelize.STRING(255),
+        field: 'access_token',
+        allowNull: true,
+    },
+    expiresAt: {
+        type: Sequelize.BIGINT,
+        field: 'expires_at',
+        allowNull: true,
+    },
+    scope: {
+        type: Sequelize.STRING(255),
+        field: 'scope',
+        allowNull: true,
+    },
+    idToken: {
+        type: Sequelize.TEXT,
+        field: 'id_token',
+        allowNull: true,
+    },
+    organizationId: {
+        type: Sequelize.INTEGER,
+        field: 'organization_id',
+        allowNull: true,
+        references: {
+            model: Organization,
+            key: 'organization_id',
+        },
+    },
+    roleId: {
+        type: Sequelize.INTEGER,
+        field: 'role_id',
+        allowNull: true,
+        references: {
+            model: Role,
+            key: 'role_id',
+        },
     },
 }, {
     createdAt: 'created_at',

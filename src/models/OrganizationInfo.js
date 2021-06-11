@@ -31,11 +31,15 @@ const OrganizationInfo = postgres.define('organization_info', {
             key: 'language_code',
         },
     },
-    name: {
+    fullName: {
         type: Sequelize.STRING(60),
-        field: 'name',
+        field: 'full_name',
         allowNull: false,
-        unique: true,
+    },
+    shortName: {
+        type: Sequelize.STRING(5),
+        field: 'short_name',
+        allowNull: true,
     },
     description: {
         type: Sequelize.STRING(255),

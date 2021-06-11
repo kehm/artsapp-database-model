@@ -19,7 +19,7 @@ const Character = postgres.define('taxon_character', {
         allowNull: false,
         references: {
             model: CharacterType,
-            key: 'character_type_name'
+            key: 'character_type_name',
         },
     },
     keyId: {
@@ -28,7 +28,7 @@ const Character = postgres.define('taxon_character', {
         allowNull: false,
         references: {
             model: Key,
-            key: 'artsapp_key_id'
+            key: 'artsapp_key_id',
         },
     },
 }, {
