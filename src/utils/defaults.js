@@ -13,6 +13,7 @@ export const mediaTypes = [
 ];
 
 export const keyStatus = [
+    { name: 'HIDDEN', description: 'Hidden' },
     { name: 'PRIVATE', description: 'Private' },
     { name: 'BETA', description: 'Beta' },
     { name: 'PUBLISHED', description: 'Published' },
@@ -56,7 +57,7 @@ export const roleInfo = [
         roleId: 3, name: 'Author', description: 'Authors can create and edit the keys, key groups and collections that belong to the user\'s workgroup', languageCode: 'en',
     },
     {
-        roleId: 4, name: 'Begrenset', description: 'Bregrensede brukere kan se eksisterende nøkler, nøkkelgrupper og samlinger, men kan ikke endre på disse eller opprette nye', languageCode: 'no',
+        roleId: 4, name: 'Begrenset', description: 'Begrensede brukere kan se eksisterende nøkler, nøkkelgrupper og samlinger, men kan ikke endre på disse eller opprette nye', languageCode: 'no',
     },
     {
         roleId: 4, name: 'Limited', description: 'Limited users can view existing keys, key groups and collections, but cannot edit these or create new ones', languageCode: 'en',
@@ -66,6 +67,7 @@ export const roleInfo = [
 export const permissions = [
     { name: 'CREATE_KEY' },
     { name: 'PUBLISH_KEY' },
+    { name: 'SHARE_KEY' },
     { name: 'EDIT_KEY' },
     { name: 'EDIT_KEY_INFO' },
     { name: 'BROWSE_KEYS' },
@@ -83,10 +85,12 @@ export const permissions = [
 export const rolePermissions = [
     { roleId: 1, permissionName: 'CREATE_KEY' },
     { roleId: 1, permissionName: 'PUBLISH_KEY' },
+    { roleId: 1, permissionName: 'SHARE_KEY' },
     { roleId: 1, permissionName: 'EDIT_KEY' },
     { roleId: 1, permissionName: 'EDIT_KEY_INFO' },
     { roleId: 1, permissionName: 'BROWSE_KEYS' },
     { roleId: 1, permissionName: 'CREATE_GROUP' },
+    { roleId: 1, permissionName: 'EDIT_GROUP' },
     { roleId: 1, permissionName: 'BROWSE_GROUPS' },
     { roleId: 1, permissionName: 'CREATE_COLLECTION' },
     { roleId: 1, permissionName: 'EDIT_COLLECTION' },
@@ -100,6 +104,7 @@ export const rolePermissions = [
     { roleId: 2, permissionName: 'EDIT_KEY_INFO' },
     { roleId: 2, permissionName: 'BROWSE_KEYS' },
     { roleId: 2, permissionName: 'CREATE_GROUP' },
+    { roleId: 2, permissionName: 'EDIT_GROUP' },
     { roleId: 2, permissionName: 'BROWSE_GROUPS' },
     { roleId: 2, permissionName: 'CREATE_COLLECTION' },
     { roleId: 2, permissionName: 'EDIT_COLLECTION' },
@@ -113,8 +118,6 @@ export const rolePermissions = [
     { roleId: 3, permissionName: 'BROWSE_KEYS' },
     { roleId: 3, permissionName: 'BROWSE_GROUPS' },
     { roleId: 3, permissionName: 'BROWSE_COLLECTIONS' },
-    { roleId: 3, permissionName: 'CREATE_WORKGROUP' },
-    { roleId: 3, permissionName: 'EDIT_WORKGROUP' },
     { roleId: 3, permissionName: 'BROWSE_WORKGROUPS' },
     { roleId: 4, permissionName: 'BROWSE_KEYS' },
     { roleId: 4, permissionName: 'BROWSE_GROUPS' },

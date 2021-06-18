@@ -59,6 +59,9 @@ const initAssociations = () => new Promise((resolve, reject) => {
         // collection.workgroup_id
         Collection.belongsTo(Workgroup, { foreignKey: { name: 'workgroup_id' } });
         Workgroup.hasOne(Collection, { foreignKey: { name: 'workgroup_id' } });
+        // collection.created_by
+        Collection.belongsTo(User, { foreignKey: { name: 'created_by' } });
+        User.hasOne(Collection, { foreignKey: { name: 'created_by' } });
         // collection_info.collection_id
         CollectionInfo.belongsTo(Collection, { foreignKey: { name: 'collection_id' } });
         Collection.hasOne(CollectionInfo, { foreignKey: { name: 'collection_id' } });
@@ -68,9 +71,18 @@ const initAssociations = () => new Promise((resolve, reject) => {
         // key_collections
         Key.belongsToMany(Collection, { through: 'key_collections', as: 'keys_collections', foreignKey: 'artsapp_key_id', otherKey: 'collection_id' });
         Collection.belongsToMany(Key, { through: 'key_collections', as: 'collections_keys', foreignKey: 'collection_id', otherKey: 'artsapp_key_id' });
+        // key_collections.artsapp_key_id
+        Collections.belongsTo(Key, { foreignKey: { name: 'artsapp_key_id' } });
+        Key.hasOne(Collections, { foreignKey: { name: 'artsapp_key_id' } });
         // key_editors
         Key.belongsToMany(User, { through: 'key_editors', as: 'keys_editors', foreignKey: 'artsapp_key_id', otherKey: 'artsapp_user_id' });
         User.belongsToMany(Key, { through: 'key_editors', as: 'users_editors', foreignKey: 'artsapp_user_id', otherKey: 'artsapp_key_id' });
+        // key_editors.artsapp_user_id
+        Editors.belongsTo(User, { foreignKey: { name: 'artsapp_user_id' } });
+        User.hasOne(Editors, { foreignKey: { name: 'artsapp_user_id' } });
+        // key_group.created_by
+        Group.belongsTo(User, { foreignKey: { name: 'created_by' } });
+        User.hasOne(Group, { foreignKey: { name: 'created_by' } });
         // key_group_info.key_group_id
         GroupInfo.belongsTo(Group, { foreignKey: { name: 'key_group_id' } });
         Group.hasOne(GroupInfo, { foreignKey: { name: 'key_group_id' } });
@@ -152,6 +164,9 @@ const initAssociations = () => new Promise((resolve, reject) => {
         // key_revisions
         Key.belongsToMany(Revision, { through: 'key_revisions', as: 'keys_revisions', foreignKey: 'artsapp_key_id', otherKey: 'revision_id' });
         Revision.belongsToMany(Key, { through: 'key_revisions', as: 'revisions_keys', foreignKey: 'revision_id', otherKey: 'artsapp_key_id' });
+        // key_revisions.revision_id
+        Revisions.belongsTo(Revision, { foreignKey: { name: 'revision_id' } });
+        Revision.hasOne(Revisions, { foreignKey: { name: 'revision_id' } });
         // taxon.artsapp_key_id
         Taxon.belongsTo(Key, { foreignKey: { name: 'artsapp_key_id' } });
         Key.hasOne(Taxon, { foreignKey: { name: 'artsapp_key_id' } });
@@ -161,9 +176,18 @@ const initAssociations = () => new Promise((resolve, reject) => {
         // artsapp_user.role_id
         User.belongsTo(Role, { foreignKey: { name: 'role_id' } });
         Role.hasOne(User, { foreignKey: { name: 'role_id' } });
+        // workgroup.organization_id
+        Workgroup.belongsTo(Organization, { foreignKey: { name: 'organization_id' } });
+        Organization.hasOne(Workgroup, { foreignKey: { name: 'organization_id' } });
+        // workgroup.created_by
+        Workgroup.belongsTo(User, { foreignKey: { name: 'created_by' } });
+        User.hasOne(Workgroup, { foreignKey: { name: 'created_by' } });
         // user_workgroups
         User.belongsToMany(Workgroup, { through: 'user_workgroups', as: 'users_workgroups', foreignKey: 'artsapp_user_id', otherKey: 'workgroup_id' });
         Workgroup.belongsToMany(User, { through: 'user_workgroups', as: 'workgroups_users', foreignKey: 'workgroup_id', otherKey: 'artsapp_user_id' });
+        // user_workgroups.artsapp_user_id
+        Workgroups.belongsTo(User, { foreignKey: { name: 'artsapp_user_id' } });
+        User.hasOne(Workgroups, { foreignKey: { name: 'artsapp_user_id' } });
         // user_workgroups.workgroup_id
         Workgroups.belongsTo(Workgroup, { foreignKey: { name: 'workgroup_id' } });
         Workgroup.hasOne(Workgroups, { foreignKey: { name: 'workgroup_id' } });

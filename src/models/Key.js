@@ -37,7 +37,7 @@ const Key = postgres.define('artsapp_key', {
     workgroupId: {
         type: Sequelize.INTEGER,
         field: 'workgroup_id',
-        allowNull: false,
+        allowNull: true,
         references: {
             model: Workgroup,
             key: 'workgroup_id',
@@ -46,7 +46,7 @@ const Key = postgres.define('artsapp_key', {
     createdBy: {
         type: Sequelize.UUID,
         field: 'created_by',
-        allowNull: false,
+        allowNull: true,
         references: {
             model: User,
             key: 'artsapp_user_id',

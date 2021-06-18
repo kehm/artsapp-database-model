@@ -51,5 +51,4 @@ const Revision = postgres.define('key_revision', {
     updatedAt: 'updated_at',
 });
 
-
 export default Revision;
