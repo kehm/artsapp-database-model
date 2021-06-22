@@ -76,6 +76,11 @@ const Key = postgres.define('artsapp_key', {
         allowNull: true,
         field: 'contributors',
     },
+    licenseUrl: {
+        type: Sequelize.STRING(60),
+        allowNull: true,
+        field: 'license_url',
+    },
 }, {
     createdAt: 'created_at',
     updatedAt: 'updated_at',
