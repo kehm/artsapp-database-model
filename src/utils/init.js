@@ -306,11 +306,13 @@ const alterSequences = () => {
  * Sync and populate tables
  */
 const initPostgres = async () => {
-    await postgres.sync({ force: process.env.POSTGRES_FORCE === 'true' });
-    await initAssociations();
-    await initDefaults();
-    await initDefaultsTest();
-    alterSequences();
+    if (process.env.POSTGRES_INIT === 'true') {
+        await postgres.sync({ force: process.env.POSTGRES_FORCE === 'true' });
+        await initAssociations();
+        await initDefaults();
+        await initDefaultsTest();
+        alterSequences();
+    } else await initAssociations();
 };
 
 export default initPostgres;
