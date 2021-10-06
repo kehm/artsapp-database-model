@@ -46,6 +46,11 @@ const Revision = postgres.define('key_revision', {
             key: 'revision_status_name',
         },
     },
+    mode: {
+        type: Sequelize.SMALLINT,
+        field: 'key_mode',
+        allowNull: false,
+    },
 }, {
     createdAt: 'created_at',
     updatedAt: 'updated_at',
