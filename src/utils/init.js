@@ -40,7 +40,6 @@ import {
     keyStatus, revisionStatus, organizationStatus, roles, permissions,
     rolePermissions, languages, characterTypes, mediaTypes, roleInfo,
 } from './defaults.js';
-import initDefaultsTest from './init-test.js';
 
 /**
  * Initialize table associations
@@ -310,7 +309,6 @@ const initPostgres = async () => {
         await postgres.sync({ force: process.env.POSTGRES_FORCE === 'true' });
         await initAssociations();
         await initDefaults();
-        await initDefaultsTest();
         alterSequences();
     } else await initAssociations();
 };
